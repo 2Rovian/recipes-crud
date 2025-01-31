@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from './authContext';
 
-
-
 function Navbar() {
 
     const { isAuthenticated, setIsAuthenticated } = useAuth();
@@ -16,7 +14,7 @@ function Navbar() {
     const [showMenuDropdown, setShowMenuDropdown] = useState(false);
 
     return (
-        <div className='h-[70px] bg-red-900 text-white'>
+        <div className='h-[70px] bg-red-900 text-white font-medium'>
             <ul className='flex justify-evenly h-full items-center container mx-auto text-lg md:text-2xl'>
 
                 <Link to='/' className='rounded-full'>
@@ -25,13 +23,13 @@ function Navbar() {
                     </li>
                 </Link>
 
-                <Link to='/' className='rounded-full'>
+                <Link to='/create-recipe' className='rounded-full'>
                     <li className='hover:bg-orange-300 hover:text-slate-950 rounded-full px-2 py-1 ease-in-out duration-500 cursor-pointer'>
                         Create Recipe
                     </li>
                 </Link>
 
-                <Link to='/' className='rounded-full'>
+                <Link to='/saved-recipes' className='rounded-full'>
                     <li className='hover:bg-orange-300 hover:text-slate-950 rounded-full px-2 py-1 ease-in-out duration-500 cursor-pointer'>
                         Saved Recipes
                     </li>

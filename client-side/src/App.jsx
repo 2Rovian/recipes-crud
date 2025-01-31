@@ -3,6 +3,8 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import { AuthProvider } from './components/authContext'
+import CreateRecipe from './pages/CreateRecipe.jsx'
+import SavedRecipes from './pages/SavedRecipes.jsx'
 
 function App() {
 
@@ -13,6 +15,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
+          <Route path='/create-recipe' element={<CreateRecipe />}/>
+          <Route path='/saved-recipes' element={<SavedRecipes />}/>
         </Routes>
       </BrowserRouter>
     </AuthProvider>

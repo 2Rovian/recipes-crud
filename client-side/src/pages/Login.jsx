@@ -1,9 +1,10 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState }  from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/authContext';
 
 function Login() {
+    const { setIsAuthenticated } = useAuth();
 
     const [isMenuRegister, setIsMenuRegister] = useState(true);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -68,10 +69,12 @@ function Login() {
                 if (data && data.token) {
                     localStorage.setItem('token', data.token);
                     setIsLoginSuccessful(true);
+                    setIsAuthenticated(true);
                     setTimeout(() => {
                         navigate('/');
-                    }, 5000);
+                    }, 3000);
                 }
+                
             } catch (error) {
                 setErrorMessage(error.response?.data?.message || "An error occurred during login.");
                 console.error("Error during login:", error);

@@ -77,11 +77,11 @@ export const loginUser = async (req, res) => {
 // Criar uma nova receita
 export const createRecipe = async (req, res) => {
     try {
-        const { title, description, ingredients, instructions, imageUrl } = req.body;
+        const { title, description, ingredients, instructions, imageUrl, cookingTime } = req.body;
         const userId = req.user.userId; // Obtém o ID do usuário do token JWT
 
         // Validação de campos obrigatórios
-        if (!title || !description || !ingredients || !instructions) {
+        if (!title || !description || !ingredients || !instructions || !cookingTime) {
             return res.status(400).json({ message: "Todos os campos são obrigatórios" });
         }
 
@@ -91,6 +91,7 @@ export const createRecipe = async (req, res) => {
             description,
             ingredients,
             instructions,
+            cookingTime,
             imageUrl,
             createdBy: userId // Associa a receita ao usuário que a criou
         });

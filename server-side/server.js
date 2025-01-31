@@ -9,11 +9,11 @@ const app = express();
 
 // Middlewares
 
-// Configurar o CORS para aceitar requisições do frontend
+// Configuração do CORS
 app.use(cors({
-    origin: 'http://localhost:5173',  // Permitindo apenas o frontend
-    methods: 'GET, POST',            // Permitindo apenas os métodos necessários
-    allowedHeaders: 'Content-Type',  // Permitindo os cabeçalhos necessários
+    origin: 'http://localhost:5173', // Permite apenas requisições do frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
 }));
 
 app.use(express.json())

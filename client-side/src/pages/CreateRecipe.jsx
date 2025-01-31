@@ -9,7 +9,7 @@ function CreateRecipe() {
 
     return (
         <div>
-            <main className='container mx-auto max-w-[1200px]'>
+            <main className='container mx-auto max-w-[900px]'>
                 <div className='mx-5'>
                     <h1 className='text-3xl bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-yellow-600 lg:text-4xl py-5 text-center font-bold'>Create Your Own Recipe</h1>
 

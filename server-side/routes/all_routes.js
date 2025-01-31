@@ -1,5 +1,5 @@
 import express from 'express';
-import { getUsers, createUser, loginUser } from '../controllers/functions.js';
+import { getUsers, createUser, loginUser, createRecipe, authenticateToken, getUserRecipes } from '../controllers/functions.js';
 
 const router = express.Router();
 
@@ -7,6 +7,8 @@ const router = express.Router();
 router.get("/users", getUsers);
 router.post("/register", createUser);
 router.post("/login", loginUser);
+router.post("/new-recipe", authenticateToken ,createRecipe);
+router.get("/get-recipes", authenticateToken, getUserRecipes);
 
 // Rota de teste
 router.get('/test', (req, res) => {

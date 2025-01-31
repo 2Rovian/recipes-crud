@@ -1,5 +1,4 @@
-import User from "../models/userSchema.js";
-import Recipe from "../models/userSchema.js"
+import { User, Recipe } from "../models/userSchema.js";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 
@@ -133,7 +132,7 @@ export const authenticateToken = (req, res, next) => {
 export const getUserRecipes = async (req, res) => {
     try {
         const userId = req.user.userId; // Obtém o ID do usuário do token JWT
-        const user = await User.findById(userId).populate('savedRecipes'); // Popula as receitas salvas
+        const user = await User.findById(userId).populate('savedRecipes');
         res.status(200).json(user.savedRecipes);
     } catch (error) {
         res.status(500).json({ message: error.message });

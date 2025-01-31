@@ -1,0 +1,16 @@
+import express from 'express';
+import { getUsers, createUser, loginUser } from '../controllers/functions.js';
+
+const router = express.Router();
+
+// Rota para buscar todos os usuários
+router.get("/users", getUsers);
+router.post("/register", createUser);
+router.post("/login", loginUser);
+
+// Rota de teste
+router.get('/test', (req, res) => {
+    res.send('API rodando');
+});
+
+export default router;

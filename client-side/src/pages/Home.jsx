@@ -13,7 +13,7 @@ function Home() {
     <div>
       <main className='container mx-auto max-w-[1200px]'>
         <div className='mx-5'>
-          <p className='text-3xl bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-yellow-600 lg:text-4xl py-7 text-center font-bold'>Welcome to YourRecipes!</p>
+          <h1 className='text-3xl bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-yellow-600 lg:text-4xl py-7 text-center font-bold'>Welcome to YourRecipes!</h1>
 
           <div className='flex flex-col gap-y-4 md:grid grid-cols-2 md:gap-x-3'>
             

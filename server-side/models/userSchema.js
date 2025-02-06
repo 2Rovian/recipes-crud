@@ -4,6 +4,7 @@ const { Schema, model } = mongoose;
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    name_profile: { type: String, required: false},
     savedRecipes: [{ type: Schema.Types.ObjectId, ref: 'Recipe' }]
 });
 

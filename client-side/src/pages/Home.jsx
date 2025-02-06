@@ -6,7 +6,7 @@ import bolo from '../assets/bolo.jpg'
 import hamburguer from '../assets/hamburguer.jpg'
 import donut from '../assets/donut.png'
 import meet from '../assets/meet.png'
-import pudim from '../assets/caramel-pudding.jpg'
+import pudim from '../assets/pudim.jpg'
 import spageti from '../assets/spageti.jpg'
 
 function Home() {

@@ -31,7 +31,7 @@ function App() {
           {/* Rotas das Receitas */}
           <Route path='/caramel-pudding' element={<CaramelPudding />} />
           <Route path='/chocolate-cake' element={<ChocolateCake />} />
-          <Route path='/glazzed-donut' element={<GlazedDonut />} />
+          <Route path='/glazed-donut' element={<GlazedDonut />} />
           <Route path='/grilled-steak' element={<GrilledSteak />} />
           <Route path='/spaghetti-carbonara' element={<SpaghettiCarbonara />} />
           <Route path='/tradional-burger' element={<TradionalBurger />} />

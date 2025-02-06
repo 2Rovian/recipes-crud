@@ -3,3 +3,7 @@
 body{
     @apply bg-slate-300;
 }
+
+.img-recipes{
+    @apply grow rounded-lg object-cover object-right border-red-950 border shadow shadow-red-900 h-40 lg:h-52;
+}

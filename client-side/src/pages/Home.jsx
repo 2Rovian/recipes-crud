@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 //food imgs
 import bolo from '../assets/bolo.jpg'
@@ -16,56 +17,81 @@ function Home() {
           <h1 className='text-3xl bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-yellow-600 lg:text-4xl py-7 text-center font-bold'>Welcome to YourRecipes!</h1>
 
           <div className='flex flex-col gap-y-4 md:grid grid-cols-2 md:gap-x-3'>
-            
+
             <div className='flex flex-col justify-center bg-slate-100 rounded-lg px-3 py-1 shadow'>
+
               <div className='flex justify-between py-2'>
                 <span className='font-bold text-xl text-red-950'>Traditional Burger</span>
-                <span className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>See Recipe</span>
+
+                <Link to='/tradional-burger' className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>
+                  See Recipe
+                </Link>
               </div>
-              <img src={hamburguer} alt="hamburguer-image" className='w-full h-[400px] rounded-xl object-cover'/>
+
+              <img src={hamburguer} alt="hamburguer-image" className='w-full h-[400px] rounded-xl object-cover' />
               <button className='py-2 text-white cursor-pointer duration-500 ease-in-out bg-red-900 hover:bg-orange-300 hover:text-red-950 rounded-lg my-2'>Save</button>
             </div>
-            
+
             <div className='flex flex-col justify-center bg-slate-100 rounded-lg px-3 py-1 shadow'>
               <div className='flex justify-between py-2'>
                 <span className='font-bold text-xl text-red-950'>Grilled Steak</span>
-                <span className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>See Recipe</span>
+
+                <Link to='/grilled-steak' className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>
+                  See Recipe
+                </Link>
+                
               </div>
-              <img src={meet} alt="meet-image" className='w-full h-[400px] rounded-xl object-cover'/>
+              <img src={meet} alt="meet-image" className='w-full h-[400px] rounded-xl object-cover' />
               <button className='py-2 text-white cursor-pointer duration-500 ease-in-out bg-red-900 hover:bg-orange-300 hover:text-red-950 rounded-lg my-2'>Save</button>
             </div>
             <div className='flex flex-col justify-center bg-slate-100 rounded-lg px-3 py-1 shadow'>
               <div className='flex justify-between py-2'>
                 <span className='font-bold text-xl text-red-950'>Chocolate Cake</span>
-                <span className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>See Recipe</span>
+
+                <Link to='/chocolate-cake' className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>
+                  See Recipe
+                </Link>
+
               </div>
-              <img src={bolo} alt="bolo-image" className='w-full h-[400px] rounded-xl object-cover'/>
+              <img src={bolo} alt="bolo-image" className='w-full h-[400px] rounded-xl object-cover' />
               <button className='py-2 text-white cursor-pointer duration-500 ease-in-out bg-red-900 hover:bg-orange-300 hover:text-red-950 rounded-lg my-2'>Save</button>
             </div>
             <div className='flex flex-col justify-center bg-slate-100 rounded-lg px-3 py-1 shadow'>
               <div className='flex justify-between py-2'>
                 <span className='font-bold text-xl text-red-950'>Glazed Donut</span>
-                <span className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>See Recipe</span>
+
+                <Link to='/glazed-donut' className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>
+                  See Recipe
+                </Link>
+
               </div>
-              <img src={donut} alt="donut-image" className='w-full h-[400px] rounded-xl object-cover'/>
+              <img src={donut} alt="donut-image" className='w-full h-[400px] rounded-xl object-cover' />
               <button className='py-2 text-white cursor-pointer duration-500 ease-in-out bg-red-900 hover:bg-orange-300 hover:text-red-950 rounded-lg my-2'>Save</button>
             </div>
 
             <div className='flex flex-col justify-center bg-slate-100 rounded-lg px-3 py-1 shadow'>
               <div className='flex justify-between py-2'>
                 <span className='font-bold text-xl text-red-950'>Caramel Pudding</span>
-                <span className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>See Recipe</span>
+
+                <Link to='/caramel-pudding' className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>
+                  See Recipe
+                </Link>
+
               </div>
-              <img src={pudim} alt="flan-image" className='w-full h-[400px] rounded-xl object-cover object-right'/>
+              <img src={pudim} alt="flan-image" className='w-full h-[400px] rounded-xl object-cover object-right' />
               <button className='py-2 text-white cursor-pointer duration-500 ease-in-out bg-red-900 hover:bg-orange-300 hover:text-red-950 rounded-lg my-2'>Save</button>
             </div>
 
             <div className='flex flex-col justify-center bg-slate-100 rounded-lg px-3 py-1 shadow'>
               <div className='flex justify-between py-2'>
                 <span className='font-bold text-xl text-red-950'>Spaghetti Carbonara</span>
-                <span className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>See Recipe</span>
+
+                <Link to='/spaghetti-carbonara' className='cursor-pointer text-red-950 hover:bg-red-900 hover:text-amber-500 border-2 duration-500 ease-in-out px-2 rounded-lg'>
+                  See Recipe
+                </Link>
+
               </div>
-              <img src={spageti} alt="spageti-image" className='w-full h-[400px] rounded-xl object-cover object-right'/>
+              <img src={spageti} alt="spageti-image" className='w-full h-[400px] rounded-xl object-cover object-right' />
               <button className='py-2 text-white cursor-pointer duration-500 ease-in-out bg-red-900 hover:bg-orange-300 hover:text-red-950 rounded-lg my-2'>Save</button>
             </div>
           </div>

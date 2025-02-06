@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../components/authContext';
@@ -42,6 +42,7 @@ function Login() {
             return;
         }
 
+        // Registro
         if (isMenuRegister) {
             const { username, password } = Data;
 
@@ -50,6 +51,7 @@ function Login() {
                 // if (data){navigate('/')};
                 if (data) {
                     setIsRegisterSucessful(true);
+                    LoginFunction();
                     setTimeout(() => {
                         navigate('/') // redireciona para a home
                     }, 5000);
@@ -61,24 +63,29 @@ function Login() {
                 console.error("Error during registration:", error);
             }
 
+        // Login
         } else {
-            try {
-                const { username, password } = Data;
-                const { data } = await axios.post("http://localhost:8000/api/login", { username, password });
+            LoginFunction();
+        }
+    }
 
-                if (data && data.token) {
-                    localStorage.setItem('token', data.token);
-                    setIsLoginSuccessful(true);
-                    setIsAuthenticated(true);
-                    setTimeout(() => {
-                        navigate('/');
-                    }, 3000);
-                }
-                
-            } catch (error) {
-                setErrorMessage(error.response?.data?.message || "An error occurred during login.");
-                console.error("Error during login:", error);
+    const LoginFunction = async () => {
+        try {
+            const { username, password } = Data;
+            const { data } = await axios.post("http://localhost:8000/api/login", { username, password });
+
+            if (data && data.token) {
+                localStorage.setItem('token', data.token);
+                setIsLoginSuccessful(true);
+                setIsAuthenticated(true);
+                setTimeout(() => {
+                    navigate('/');
+                }, 3000);
             }
+
+        } catch (error) {
+            setErrorMessage(error.response?.data?.message || "An error occurred during login.");
+            console.error("Error during login:", error);
         }
     }
 
@@ -129,15 +136,22 @@ function Login() {
 
             </div>
 
-            {isRegisterSucessful && (<div className='bg-neutral-50 w-[200px] mx-auto my-10 py-5 rounded-full'>
+            {/* {isRegisterSucessful && (<div className='bg-neutral-50 w-[200px] mx-auto my-10 py-5 rounded-full'>
+                <p className='text-green-500 text-center font-semibold'>Register Successful! &#x2705;</p>
+
+            </div>)} */}
+
+            {isRegisterSucessful && isLoginSuccessful && (<div className='bg-neutral-50 w-[200px] mx-auto my-10 py-5 rounded-full'>
                 <p className='text-green-500 text-center font-semibold'>Register Successful! &#x2705;</p>
 
             </div>)}
 
-            {isLoginSuccessful && (<div className='bg-neutral-50 w-[200px] mx-auto my-10 py-5 rounded-full'>
+            {isLoginSuccessful && isRegisterSucessful === false &&(<div className='bg-neutral-50 w-[200px] mx-auto my-10 py-5 rounded-full'>
                 <p className='text-green-500 text-center font-semibold'>Login Successful! &#x2705;</p>
 
             </div>)}
+
+
         </div>
     )
 }

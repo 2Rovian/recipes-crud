@@ -38,21 +38,25 @@ function Navbar() {
                 {isAuthenticated ?
                     (<div className='relative'>
                         <i className="fa-solid fa-user p-2 cursor-pointer hover:scale-125 duration-500 ease-in-out "
-                        onClick={() => { setShowMenuDropdown(!showMenuDropdown) }}
+                            onClick={() => { setShowMenuDropdown(!showMenuDropdown) }}
                         ></i>
 
-                        { showMenuDropdown && <div className='absolute left-1/2 -translate-x-1/2 bg-slate-100 text-slate-900 rounded-lg py-2'>
-                            <span className='mx-2 font-semibold cursor-pointer hover:underline'
-                            onClick={handleLogout}
+                        {showMenuDropdown && <div className='absolute left-1/2 -translate-x-1/2 bg-slate-100 shadow text-slate-900 flex flex-col rounded-lg py-2 gap-y-4'>
+
+                            <Link to='/profile' className='text-center hover:text-red-900 hover:scale-105 duration-500 ease-in-out cursor-pointer'>
+                                <span className='font-semibold '>Profile</span>
+                            </Link>
+                            <span className='px-2 py-1 font-semibold cursor-pointer hover:underline'
+                                onClick={handleLogout}
                             >Logout</span>
-                        </div> }
-                        
+                        </div>}
+
                     </div>)
                     :
 
                     (<Link to='/login' className='rounded-full'>
                         <li className='hover:bg-orange-300 hover:text-slate-950 rounded-full px-2 py-1 ease-in-out duration-500 cursor-pointer'
-                        onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => e.stopPropagation()}
                         >
                             Login/Register
                         </li>

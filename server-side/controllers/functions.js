@@ -1,4 +1,4 @@
-import User from "../models/userSchema.js";
+import { User, Recipe } from "../models/userSchema.js";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 
@@ -48,13 +48,13 @@ export const loginUser = async (req, res) => {
 
         // verifica se user existe
         const user = await User.findOne({ username });
-        if (!user){
+        if (!user) {
             return res.status(404).json({ message: "Usuário não encontrado" })
         }
 
         // verifica se a senha está correta
         const isPasswordValid = await bcrypt.compare(password, user.password)
-        if(!isPasswordValid){
+        if (!isPasswordValid) {
             return res.status(401).json({ message: "senha inválida" })
         }
 
@@ -72,3 +72,69 @@ export const loginUser = async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 }
+
+// Criar uma nova receita
+export const createRecipe = async (req, res) => {
+    try {
+        const { title, description, ingredients, instructions, imageUrl, cookingTime } = req.body;
+        const userId = req.user.userId; // Obtém o ID do usuário do token JWT
+
+        // Validação de campos obrigatórios
+        if (!title || !description || !ingredients || !instructions || !cookingTime) {
+            return res.status(400).json({ message: "Todos os campos são obrigatórios" });
+        }
+
+        // Cria a nova receita
+        const newRecipe = new Recipe({
+            title,
+            description,
+            ingredients,
+            instructions,
+            cookingTime,
+            imageUrl,
+            createdBy: userId // Associa a receita ao usuário que a criou
+        });
+
+        await newRecipe.save();
+
+        // Atualiza o usuário para incluir a receita salva
+        await User.findByIdAndUpdate(userId, { $push: { savedRecipes: newRecipe._id } });
+
+        res.status(201).json(newRecipe);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// middleware
+export const authenticateToken = (req, res, next) => {
+    // Obtém o token do cabeçalho Authorization
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Formato: Bearer <token>
+
+    // Se não houver token, retorna erro 401 (Não autorizado)
+    if (!token) {
+        return res.status(401).json({ message: "Acesso negado. Token não fornecido." });
+    }
+
+    // Verifica o token
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+        if (err) {
+            return res.status(403).json({ message: "Token inválido ou expirado." });
+        }
+
+        // Se o token for válido, adiciona o usuário à requisição
+        req.user = user;
+        next(); // Passa para o próximo middleware ou rota
+    });
+};
+
+export const getUserRecipes = async (req, res) => {
+    try {
+        const userId = req.user.userId; // Obtém o ID do usuário do token JWT
+        const user = await User.findById(userId).populate('savedRecipes');
+        res.status(200).json(user.savedRecipes);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
